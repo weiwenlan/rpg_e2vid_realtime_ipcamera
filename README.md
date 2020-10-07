@@ -98,8 +98,7 @@ We set the default number of lines 15000. Every lines are composed with [timesta
 You could change it in the run_realtime.py. 
 
 Our settine of DV-python is showed below:
-![DV-python Settings](dv-screen.png)
-![DV-python Settings](dv-setting.png)
+![DV-python Settings](dv-screen.png)![DV-python Settings](dv-setting.png)
 
 
 Run the file run_realtime.py and enjoy.
