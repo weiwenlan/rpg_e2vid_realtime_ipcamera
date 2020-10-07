@@ -1,5 +1,6 @@
 # rpg_e2vid_realtime_ipcamera
 Use e2vid models for realtime construction by using an ipcamera
+
 Thanks to the authors of [High Speed and High Dynamic Range Video with an Event Camera](https://github.com/uzh-rpg/rpg_e2vid)
 ```bibtex
 @Article{Rebecq19pami,
@@ -78,9 +79,25 @@ python run_reconstruction.py \
 # Run Realtime with ipcamera
 
 By using the DV-python to input data stream with the ip(127.0.0.1) and port(7777)
+
 **see more on https://gitlab.com/inivation/dv/dv-python**
 
+Put pretrained model in 
+```bash
+  pretrained/E2VID_lightweight.pth.tar 
+```
+
+We set the default number of lines 15000. Every lines are composed with [timestamps, x, y, polarities].
+You could change it in the run_realtime.py. 
+
+Our settine of DV-python is showed below:
+
+```bash
+python run_realtime.py 
+```
+
 Run the file run_realtime.py and enjoy.
+
 
 
 ## Parameters
