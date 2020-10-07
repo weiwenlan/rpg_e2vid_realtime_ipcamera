@@ -92,12 +92,12 @@ You could change it in the run_realtime.py.
 
 Our settine of DV-python is showed below:
 
+
+
+Run the file run_realtime.py and enjoy.
 ```bash
 python run_realtime.py 
 ```
-
-Run the file run_realtime.py and enjoy.
-
 
 
 ## Parameters
