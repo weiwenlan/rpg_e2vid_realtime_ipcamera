@@ -1,5 +1,6 @@
 # rpg_e2vid_realtime_ipcamera
 Use e2vid models for realtime construction by using an ipcamera
+The real-time construction could be used for Davis-346 camera only
 
 Thanks to the authors of [High Speed and High Dynamic Range Video with an Event Camera](https://github.com/uzh-rpg/rpg_e2vid)
 ```bibtex
@@ -29,7 +30,7 @@ please first clone the code and install dependencies:
 - [NumPy](https://www.numpy.org/)
 - [Pandas](https://pandas.pydata.org/)
 - [OpenCV](https://opencv.org/)
-- [DV-Python](https://inivationß.gitlab.io/dv/dv-docs/docs/getting-ready-for-development/)
+- [DV-Python](https://gitlab.com/inivation/dv/dv-python)
 
 ## Install with Anaconda
 
@@ -43,7 +44,13 @@ conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
 conda install pandas
 conda install -c conda-forge opencv
 ```
-
+## Install with dv-gui and dv
+```bash
+sudo add-apt-repository ppa:inivation-ppa/inivation
+sudo apt-get update
+sudo apt-get install dv-gui
+sudo apt-get install dv-runtime-dev
+```
 ## Run model with event data file
 
 - Download the pretrained model:
@@ -130,15 +137,6 @@ Below is a description of the most important parameters:
 - ``--no-recurrent`` (default: False): Disable the recurrent connection (i.e. do not maintain a state). For experimenting only, the results will be flickering a lot.
 - ``--hot_pixels_file`` (default: None): Path to a file specifying the locations of hot pixels (such a file can be obtained with [this tool](https://github.com/cedric-scheerlinck/dvs_tools/tree/master/dvs_hot_pixel_filter) for example). These pixels will be ignored (i.e. zeroed out in the event tensors).
 
-## Example datasets
-
-We provide a list of example (publicly available) event datasets to get started with E2VID.
-
-- [High Speed (gun shooting!) and HDR Dataset](http://rpg.ifi.uzh.ch/E2VID.html)
-- [Event Camera Dataset](http://rpg.ifi.uzh.ch/data/E2VID/datasets/ECD_IJRR17/)
-- [Bardow et al., CVPR'16](http://rpg.ifi.uzh.ch/data/E2VID/datasets/SOFIE_CVPR16/)
-- [Scherlinck et al., ACCV'18](http://rpg.ifi.uzh.ch/data/E2VID/datasets/HF_ACCV18/)
-- [Color event sequences from the CED dataset Scheerlinck et al., CVPR'18](http://rpg.ifi.uzh.ch/data/E2VID/datasets/CED_CVPRW19/)
 
 
 
