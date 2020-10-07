@@ -84,7 +84,7 @@ By using the DV-python to input data stream with the ip(127.0.0.1) and port(7777
 
 Put pretrained model in 
 ```bash
-  pretrained/E2VID_lightweight.pth.tar 
+pretrained/E2VID_lightweight.pth.tar 
 ```
 
 We set the default number of lines 15000. Every lines are composed with [timestamps, x, y, polarities].
