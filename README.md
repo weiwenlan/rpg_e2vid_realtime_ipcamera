@@ -83,9 +83,12 @@ python run_reconstruction.py \
 ```
 
 
-# Run Realtime with ipcamera
+- Run Realtime with ipcamera
 
 By using the DV-python to input data stream with the ip(127.0.0.1) and port(7777)
+```bash
+python run_realtime.py
+```
 
 **see more on https://gitlab.com/inivation/dv/dv-python**
 
