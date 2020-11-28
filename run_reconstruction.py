@@ -32,6 +32,8 @@ def Fixedreturn(address , N):
         x = x.astype(np.int16)
         y = y.astype(np.int16)
         polarities = polarities.astype(np.int16)
+        if polarities == -1:
+            polarities = 0
         tmp=np.array([[timestamps, x, y, polarities]])
         dataline = np.concatenate((dataline, tmp), axis=0)
         if   i % N==0 and i !=0:
@@ -53,7 +55,7 @@ if __name__ == "__main__":
                         help="Size of each event window, in number of events. Ignored if --fixed_duration=True")
     parser.add_argument('-T', '--window_duration', default=33.33, type=float,
                         help="Duration of each event window, in milliseconds. Ignored if --fixed_duration=False")
-    parser.add_argument('--num_events_per_pixel', default=0.35, type=float,
+    parser.add_argument('--num_events_per_pixel', default=0.15, type=float,
                         help='in case N (window size) is not specified, it will be \
                               automatically computed as N = width * height * num_events_per_pixel')
     parser.add_argument('--skipevents', default=0, type=int)
