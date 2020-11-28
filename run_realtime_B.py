@@ -14,7 +14,7 @@ import datetime
 from image_reconstructor import ImageReconstructor
 from options.inference_options import set_inference_options
 from dv import AedatFile
-from dv import NetworkEventInput
+from dv import NetworkNumpyEventPacketInput
 import threading
 import queue
 from models.experimental import attempt_load
@@ -129,25 +129,27 @@ class Thread2(threading.Thread):
         time_stop = time.time()
         time_tmp = 0
         #while True:
-        with NetworkEventInput(address='127.0.0.1', port=7777) as i:
+        with NetworkNumpyEventPacketInput(address='127.0.0.1', port=7777) as i:
                 time_start = time.time()
                 for event in i:
-                    timestamps = np.float64(event.timestamp)
-                    x = np.int16(event.x)
-                    y = np.int16(event.y) 
-                    polarities = np.int16(event.polarity)
+                    timestamps = event['timestamp']
+                    x = event['x']
+                    y = event['y']
+                    polarities = event['polarity']
                     tmp=np.array([[timestamps, x, y, polarities]])
+                    tmp = tmp.T.reshape(-1,4)
                     dataline = np.concatenate((dataline, tmp), axis=0)
-                    if len(dataline) == 2500 :
+                    if len(dataline) >= 15000 :
                         con.acquire(timeout=1e-4)
                         q.put(dataline)
                         time_stop = time.time()
-                        print(time_stop - time_start-time_tmp)
+                        print('Total Time:'+str(time_stop - time_start-time_tmp))
                         time_tmp = time_stop - time_start   
                         dataline=np.empty([1,4])
                         con.notifyAll()
                         #import pdb;pdb.set_trace()
                         con.release()
+
 
 
 
